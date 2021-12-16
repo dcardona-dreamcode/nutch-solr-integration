@@ -1,0 +1,1310 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Api Documentation</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>Api Documentation</h1>
+    <div class="app-desc">Api Documentation</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 1.0</div>
+    <div class="app-desc">BasePath:/</div>
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0</div>
+  <h2>Access</h2>
+    <ol>
+      <li>HTTP Basic Authentication</li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#AccountResource">AccountResource</a></h4>
+  <ul>
+  <li><a href="#associateWarrantyToAccountUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/account/{externalId}/warrantyassociation</code></a></li>
+  <li><a href="#createAccountUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/account</code></a></li>
+  <li><a href="#createOverdueUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/merchants/{merchantId}/overdue</code></a></li>
+  <li><a href="#createPerTenantConfigUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/merchants/{merchantId}/tenants/uploadPerTenantConfig</code></a></li>
+  <li><a href="#createPluginConfigUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/merchants/{merchantId}/tenants/uploadPluginConfig/{pluginName}</code></a></li>
+  </ul>
+  <h4><a href="#PayByLinkResource">PayByLinkResource</a></h4>
+  <ul>
+  <li><a href="#getBillingInfoUsingGET"><code><span class="http-method">get</span> /billingadapter/1/pay-by-link/billing-info</code></a></li>
+  </ul>
+  <h4><a href="#PaymentMethodResource">PaymentMethodResource</a></h4>
+  <ul>
+  <li><a href="#createPaymentMethodUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/paymentmethod</code></a></li>
+  <li><a href="#updatePaymentMethodUsingPUT"><code><span class="http-method">put</span> /billingadapter/1/paymentmethod</code></a></li>
+  <li><a href="#updateSepaPaymentMethodUsingPUT"><code><span class="http-method">put</span> /billingadapter/1/sepa/paymentmethod</code></a></li>
+  </ul>
+  <h4><a href="#RefundResource">RefundResource</a></h4>
+  <ul>
+  <li><a href="#refundUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/refunds</code></a></li>
+  </ul>
+  <h4><a href="#SubscriptionResource">SubscriptionResource</a></h4>
+  <ul>
+  <li><a href="#cancelSubscriptionUsingDELETE"><code><span class="http-method">delete</span> /billingadapter/1/subscription/{externalId}</code></a></li>
+  <li><a href="#createSubscriptionForCustomerUsingPOST"><code><span class="http-method">post</span> /billingadapter/1/subscription</code></a></li>
+  </ul>
+
+  <h1><a name="AccountResource">AccountResource</a></h1>
+  <div class="method"><a name="associateWarrantyToAccountUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/account/{externalId}/warrantyassociation</code></pre></div>
+    <div class="method-summary">associateWarrantyToAccount (<span class="nickname">associateWarrantyToAccountUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">externalId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; externalId </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">warrantyAssociationRequest <a href="#WarrantyAssociationRequest">WarrantyAssociationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; warrantyAssociationRequest </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createAccountUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/account</code></pre></div>
+    <div class="method-summary">createAccount (<span class="nickname">createAccountUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#AccountCreationRequest">AccountCreationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; request </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#AccountCreationResponse">AccountCreationResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#AccountCreationResponse">AccountCreationResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createOverdueUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/merchants/{merchantId}/overdue</code></pre></div>
+    <div class="method-summary">createOverdue (<span class="nickname">createOverdueUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">merchantId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; merchantId </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">overdue <a href="#Overdue">Overdue</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; overdue </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createPerTenantConfigUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/merchants/{merchantId}/tenants/uploadPerTenantConfig</code></pre></div>
+    <div class="method-summary">createPerTenantConfig (<span class="nickname">createPerTenantConfigUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">merchantId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; merchantId </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>text/plain</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">tenantKeyValue <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; tenantKeyValue </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createPluginConfigUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/merchants/{merchantId}/tenants/uploadPluginConfig/{pluginName}</code></pre></div>
+    <div class="method-summary">createPluginConfig (<span class="nickname">createPluginConfigUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">merchantId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; merchantId </div><div class="param">pluginName (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; pluginName </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>text/plain</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">tenantKeyValue <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; tenantKeyValue </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="PayByLinkResource">PayByLinkResource</a></h1>
+  <div class="method"><a name="getBillingInfoUsingGET"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /billingadapter/1/pay-by-link/billing-info</code></pre></div>
+    <div class="method-summary">getBillingInfo (<span class="nickname">getBillingInfoUsingGET</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">accountId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; accountId </div><div class="param">subscriptionId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; subscriptionId </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#BillingInfoResponse">BillingInfoResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#BillingInfoResponse">BillingInfoResponse</a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="PaymentMethodResource">PaymentMethodResource</a></h1>
+  <div class="method"><a name="createPaymentMethodUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/paymentmethod</code></pre></div>
+    <div class="method-summary">createPaymentMethod (<span class="nickname">createPaymentMethodUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#PaymentMethodCreationRequest">PaymentMethodCreationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; request </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PaymentMethodCreationResponse">PaymentMethodCreationResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#PaymentMethodCreationResponse">PaymentMethodCreationResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updatePaymentMethodUsingPUT"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /billingadapter/1/paymentmethod</code></pre></div>
+    <div class="method-summary">updatePaymentMethod (<span class="nickname">updatePaymentMethodUsingPUT</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#PaymentMethodCreationRequest">PaymentMethodCreationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; request </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PaymentMethodCreationResponse">PaymentMethodCreationResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#PaymentMethodCreationResponse">PaymentMethodCreationResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateSepaPaymentMethodUsingPUT"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /billingadapter/1/sepa/paymentmethod</code></pre></div>
+    <div class="method-summary">updateSepaPaymentMethod (<span class="nickname">updateSepaPaymentMethodUsingPUT</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#SepaIbanPaymentMethodCreationRequest">SepaIbanPaymentMethodCreationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; request </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PaymentMethodCreationResponse">PaymentMethodCreationResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#PaymentMethodCreationResponse">PaymentMethodCreationResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="RefundResource">RefundResource</a></h1>
+  <div class="method"><a name="refundUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/refunds</code></pre></div>
+    <div class="method-summary">refund (<span class="nickname">refundUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">refundRequest <a href="#RefundRequest">RefundRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; refundRequest </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RefundResponse">RefundResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#RefundResponse">RefundResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="SubscriptionResource">SubscriptionResource</a></h1>
+  <div class="method"><a name="cancelSubscriptionUsingDELETE"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /billingadapter/1/subscription/{externalId}</code></pre></div>
+    <div class="method-summary">cancelSubscription (<span class="nickname">cancelSubscriptionUsingDELETE</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">externalId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; externalId </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">cancelDate (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; cancelDate </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SubscriptionResponse">SubscriptionResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#SubscriptionResponse">SubscriptionResponse</a>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createSubscriptionForCustomerUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /billingadapter/1/subscription</code></pre></div>
+    <div class="method-summary">createSubscriptionForCustomer (<span class="nickname">createSubscriptionForCustomerUsingPOST</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#SubscriptionCreationRequest">SubscriptionCreationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; request </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Tenant-Key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Tenant-Key </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SubscriptionResponse">SubscriptionResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#SubscriptionResponse">SubscriptionResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#AccountCreationRequest"><code>AccountCreationRequest</code> - AccountCreationRequest</a></li>
+    <li><a href="#AccountCreationResponse"><code>AccountCreationResponse</code> - AccountCreationResponse</a></li>
+    <li><a href="#Address"><code>Address</code> - Address</a></li>
+    <li><a href="#AuthorizationDetails"><code>AuthorizationDetails</code> - AuthorizationDetails</a></li>
+    <li><a href="#BillingInfoResponse"><code>BillingInfoResponse</code> - BillingInfoResponse</a></li>
+    <li><a href="#Customer"><code>Customer</code> - Customer</a></li>
+    <li><a href="#Duration"><code>Duration</code> - Duration</a></li>
+    <li><a href="#OrderItem"><code>OrderItem</code> - OrderItem</a></li>
+    <li><a href="#Overdue"><code>Overdue</code> - Overdue</a></li>
+    <li><a href="#OverdueCondition"><code>OverdueCondition</code> - OverdueCondition</a></li>
+    <li><a href="#OverdueStateConfig"><code>OverdueStateConfig</code> - OverdueStateConfig</a></li>
+    <li><a href="#Payment"><code>Payment</code> - Payment</a></li>
+    <li><a href="#PaymentMethodCreationRequest"><code>PaymentMethodCreationRequest</code> - PaymentMethodCreationRequest</a></li>
+    <li><a href="#PaymentMethodCreationResponse"><code>PaymentMethodCreationResponse</code> - PaymentMethodCreationResponse</a></li>
+    <li><a href="#PaymentTransaction"><code>PaymentTransaction</code> - PaymentTransaction</a></li>
+    <li><a href="#RefundRequest"><code>RefundRequest</code> - RefundRequest</a></li>
+    <li><a href="#RefundResponse"><code>RefundResponse</code> - RefundResponse</a></li>
+    <li><a href="#SepaIbanPaymentMethodCreationRequest"><code>SepaIbanPaymentMethodCreationRequest</code> - SepaIbanPaymentMethodCreationRequest</a></li>
+    <li><a href="#SubscriptionCreationRequest"><code>SubscriptionCreationRequest</code> - SubscriptionCreationRequest</a></li>
+    <li><a href="#SubscriptionResponse"><code>SubscriptionResponse</code> - SubscriptionResponse</a></li>
+    <li><a href="#WarrantyAssociationRequest"><code>WarrantyAssociationRequest</code> - WarrantyAssociationRequest</a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="AccountCreationRequest"><code>AccountCreationRequest</code> - AccountCreationRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">billingDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+<div class="param">currencyCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">USD</div><div class="param-enum">EUR</div><div class="param-enum">AUD</div>
+<div class="param">customer (optional)</div><div class="param-desc"><span class="param-type"><a href="#Customer">Customer</a></span>  </div>
+<div class="param">entitlementDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+<div class="param">externalAccountId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">migration (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">orderItems (optional)</div><div class="param-desc"><span class="param-type"><a href="#OrderItem">array[OrderItem]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="AccountCreationResponse"><code>AccountCreationResponse</code> - AccountCreationResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">accountId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">externalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">subscriptionId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Address"><code>Address</code> - Address</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">address1 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">address2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">city (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">country (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">stateProvince (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">zipPostalCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="AuthorizationDetails"><code>AuthorizationDetails</code> - AuthorizationDetails</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">authCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">externalRef (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">processor (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">referenceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="BillingInfoResponse"><code>BillingInfoResponse</code> - BillingInfoResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">amount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">currency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">AED</div><div class="param-enum">AFN</div><div class="param-enum">ALL</div><div class="param-enum">AMD</div><div class="param-enum">ANG</div><div class="param-enum">AOA</div><div class="param-enum">ARS</div><div class="param-enum">AUD</div><div class="param-enum">AWG</div><div class="param-enum">AZN</div><div class="param-enum">BAM</div><div class="param-enum">BBD</div><div class="param-enum">BDT</div><div class="param-enum">BGN</div><div class="param-enum">BHD</div><div class="param-enum">BIF</div><div class="param-enum">BMD</div><div class="param-enum">BND</div><div class="param-enum">BOB</div><div class="param-enum">BRL</div><div class="param-enum">BSD</div><div class="param-enum">BTN</div><div class="param-enum">BWP</div><div class="param-enum">BYR</div><div class="param-enum">BZD</div><div class="param-enum">CAD</div><div class="param-enum">CDF</div><div class="param-enum">CHF</div><div class="param-enum">CLP</div><div class="param-enum">CNY</div><div class="param-enum">COP</div><div class="param-enum">CRC</div><div class="param-enum">CUC</div><div class="param-enum">CUP</div><div class="param-enum">CVE</div><div class="param-enum">CZK</div><div class="param-enum">DJF</div><div class="param-enum">DKK</div><div class="param-enum">DOP</div><div class="param-enum">DZD</div><div class="param-enum">EGP</div><div class="param-enum">ERN</div><div class="param-enum">ETB</div><div class="param-enum">EUR</div><div class="param-enum">FJD</div><div class="param-enum">FKP</div><div class="param-enum">GBP</div><div class="param-enum">GEL</div><div class="param-enum">GGP</div><div class="param-enum">GHS</div><div class="param-enum">GIP</div><div class="param-enum">GMD</div><div class="param-enum">GNF</div><div class="param-enum">GTQ</div><div class="param-enum">GYD</div><div class="param-enum">HKD</div><div class="param-enum">HNL</div><div class="param-enum">HRK</div><div class="param-enum">HTG</div><div class="param-enum">HUF</div><div class="param-enum">IDR</div><div class="param-enum">ILS</div><div class="param-enum">IMP</div><div class="param-enum">INR</div><div class="param-enum">IQD</div><div class="param-enum">IRR</div><div class="param-enum">ISK</div><div class="param-enum">JEP</div><div class="param-enum">JMD</div><div class="param-enum">JOD</div><div class="param-enum">JPY</div><div class="param-enum">KES</div><div class="param-enum">KGS</div><div class="param-enum">KHR</div><div class="param-enum">KMF</div><div class="param-enum">KPW</div><div class="param-enum">KRW</div><div class="param-enum">KWD</div><div class="param-enum">KYD</div><div class="param-enum">KZT</div><div class="param-enum">LAK</div><div class="param-enum">LBP</div><div class="param-enum">LKR</div><div class="param-enum">LRD</div><div class="param-enum">LSL</div><div class="param-enum">LTL</div><div class="param-enum">LVL</div><div class="param-enum">LYD</div><div class="param-enum">MAD</div><div class="param-enum">MDL</div><div class="param-enum">MGA</div><div class="param-enum">MKD</div><div class="param-enum">MMK</div><div class="param-enum">MNT</div><div class="param-enum">MOP</div><div class="param-enum">MRO</div><div class="param-enum">MUR</div><div class="param-enum">MVR</div><div class="param-enum">MWK</div><div class="param-enum">MXN</div><div class="param-enum">MYR</div><div class="param-enum">MZN</div><div class="param-enum">NAD</div><div class="param-enum">NGN</div><div class="param-enum">NIO</div><div class="param-enum">NOK</div><div class="param-enum">NPR</div><div class="param-enum">NZD</div><div class="param-enum">OMR</div><div class="param-enum">PAB</div><div class="param-enum">PEN</div><div class="param-enum">PGK</div><div class="param-enum">PHP</div><div class="param-enum">PKR</div><div class="param-enum">PLN</div><div class="param-enum">PYG</div><div class="param-enum">QAR</div><div class="param-enum">RON</div><div class="param-enum">RSD</div><div class="param-enum">RUB</div><div class="param-enum">RWF</div><div class="param-enum">SAR</div><div class="param-enum">SBD</div><div class="param-enum">SCR</div><div class="param-enum">SDG</div><div class="param-enum">SEK</div><div class="param-enum">SGD</div><div class="param-enum">SHP</div><div class="param-enum">SLL</div><div class="param-enum">SOS</div><div class="param-enum">SPL</div><div class="param-enum">SRD</div><div class="param-enum">STD</div><div class="param-enum">SVC</div><div class="param-enum">SYP</div><div class="param-enum">SZL</div><div class="param-enum">THB</div><div class="param-enum">TJS</div><div class="param-enum">TMT</div><div class="param-enum">TND</div><div class="param-enum">TOP</div><div class="param-enum">TRY</div><div class="param-enum">TTD</div><div class="param-enum">TVD</div><div class="param-enum">TWD</div><div class="param-enum">TZS</div><div class="param-enum">UAH</div><div class="param-enum">UGX</div><div class="param-enum">USD</div><div class="param-enum">UYU</div><div class="param-enum">UZS</div><div class="param-enum">VEF</div><div class="param-enum">VND</div><div class="param-enum">VUV</div><div class="param-enum">WST</div><div class="param-enum">XAF</div><div class="param-enum">XCD</div><div class="param-enum">XDR</div><div class="param-enum">XOF</div><div class="param-enum">XPF</div><div class="param-enum">YER</div><div class="param-enum">ZAR</div><div class="param-enum">ZMW</div><div class="param-enum">ZWD</div><div class="param-enum">BTC</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Customer"><code>Customer</code> - Customer</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">addresses (optional)</div><div class="param-desc"><span class="param-type"><a href="#Address">array[Address]</a></span>  </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">firstName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">lastName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">personId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">phone (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Duration"><code>Duration</code> - Duration</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">number (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">unit (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">DAYS</div><div class="param-enum">WEEKS</div><div class="param-enum">MONTHS</div><div class="param-enum">YEARS</div><div class="param-enum">UNLIMITED</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OrderItem"><code>OrderItem</code> - OrderItem</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">resaleProductId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Overdue"><code>Overdue</code> - Overdue</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">initialReevaluationInterval (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">overdueStates (optional)</div><div class="param-desc"><span class="param-type"><a href="#OverdueStateConfig">array[OverdueStateConfig]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OverdueCondition"><code>OverdueCondition</code> - OverdueCondition</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">controlTagExclusion (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">AUTO_PAY_OFF</div><div class="param-enum">AUTO_INVOICING_OFF</div><div class="param-enum">OVERDUE_ENFORCEMENT_OFF</div><div class="param-enum">WRITTEN_OFF</div><div class="param-enum">MANUAL_PAY</div><div class="param-enum">TEST</div><div class="param-enum">PARTNER</div><div class="param-enum">AUTO_INVOICING_DRAFT</div><div class="param-enum">AUTO_INVOICING_REUSE_DRAFT</div>
+<div class="param">controlTagInclusion (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">AUTO_PAY_OFF</div><div class="param-enum">AUTO_INVOICING_OFF</div><div class="param-enum">OVERDUE_ENFORCEMENT_OFF</div><div class="param-enum">WRITTEN_OFF</div><div class="param-enum">MANUAL_PAY</div><div class="param-enum">TEST</div><div class="param-enum">PARTNER</div><div class="param-enum">AUTO_INVOICING_DRAFT</div><div class="param-enum">AUTO_INVOICING_REUSE_DRAFT</div>
+<div class="param">numberOfUnpaidInvoicesEqualsOrExceeds (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">responseForLastFailedPayment (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        
+<div class="param">timeSinceEarliestUnpaidInvoiceEqualsOrExceeds (optional)</div><div class="param-desc"><span class="param-type"><a href="#Duration">Duration</a></span>  </div>
+<div class="param">totalUnpaidInvoiceBalanceEqualsOrExceeds (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OverdueStateConfig"><code>OverdueStateConfig</code> - OverdueStateConfig</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">autoReevaluationIntervalDays (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">condition (optional)</div><div class="param-desc"><span class="param-type"><a href="#OverdueCondition">OverdueCondition</a></span>  </div>
+<div class="param">externalMessage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">isBlockChanges (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">isClearState (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">isDisableEntitlement (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">subscriptionCancellationPolicy (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">END_OF_TERM</div><div class="param-enum">IMMEDIATE</div><div class="param-enum">NONE</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Payment"><code>Payment</code> - Payment</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">creditCardExpirationMonth (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">creditCardExpirationYear (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">creditCardNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">currencyCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">paymentToken (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">recuringPaymentMethodId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="PaymentMethodCreationRequest"><code>PaymentMethodCreationRequest</code> - PaymentMethodCreationRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">authorizationDetails (optional)</div><div class="param-desc"><span class="param-type"><a href="#AuthorizationDetails">AuthorizationDetails</a></span>  </div>
+<div class="param">customer (optional)</div><div class="param-desc"><span class="param-type"><a href="#Customer">Customer</a></span>  </div>
+<div class="param">externalAccountId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">payment (optional)</div><div class="param-desc"><span class="param-type"><a href="#Payment">Payment</a></span>  </div>
+<div class="param">paymentMethodRequestType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">recurringPaymentDefinitionId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="PaymentMethodCreationResponse"><code>PaymentMethodCreationResponse</code> - PaymentMethodCreationResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">paymentMethodId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">statusDetail (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="PaymentTransaction"><code>PaymentTransaction</code> - PaymentTransaction</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">amount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">currency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">AED</div><div class="param-enum">AFN</div><div class="param-enum">ALL</div><div class="param-enum">AMD</div><div class="param-enum">ANG</div><div class="param-enum">AOA</div><div class="param-enum">ARS</div><div class="param-enum">AUD</div><div class="param-enum">AWG</div><div class="param-enum">AZN</div><div class="param-enum">BAM</div><div class="param-enum">BBD</div><div class="param-enum">BDT</div><div class="param-enum">BGN</div><div class="param-enum">BHD</div><div class="param-enum">BIF</div><div class="param-enum">BMD</div><div class="param-enum">BND</div><div class="param-enum">BOB</div><div class="param-enum">BRL</div><div class="param-enum">BSD</div><div class="param-enum">BTN</div><div class="param-enum">BWP</div><div class="param-enum">BYR</div><div class="param-enum">BZD</div><div class="param-enum">CAD</div><div class="param-enum">CDF</div><div class="param-enum">CHF</div><div class="param-enum">CLP</div><div class="param-enum">CNY</div><div class="param-enum">COP</div><div class="param-enum">CRC</div><div class="param-enum">CUC</div><div class="param-enum">CUP</div><div class="param-enum">CVE</div><div class="param-enum">CZK</div><div class="param-enum">DJF</div><div class="param-enum">DKK</div><div class="param-enum">DOP</div><div class="param-enum">DZD</div><div class="param-enum">EGP</div><div class="param-enum">ERN</div><div class="param-enum">ETB</div><div class="param-enum">EUR</div><div class="param-enum">FJD</div><div class="param-enum">FKP</div><div class="param-enum">GBP</div><div class="param-enum">GEL</div><div class="param-enum">GGP</div><div class="param-enum">GHS</div><div class="param-enum">GIP</div><div class="param-enum">GMD</div><div class="param-enum">GNF</div><div class="param-enum">GTQ</div><div class="param-enum">GYD</div><div class="param-enum">HKD</div><div class="param-enum">HNL</div><div class="param-enum">HRK</div><div class="param-enum">HTG</div><div class="param-enum">HUF</div><div class="param-enum">IDR</div><div class="param-enum">ILS</div><div class="param-enum">IMP</div><div class="param-enum">INR</div><div class="param-enum">IQD</div><div class="param-enum">IRR</div><div class="param-enum">ISK</div><div class="param-enum">JEP</div><div class="param-enum">JMD</div><div class="param-enum">JOD</div><div class="param-enum">JPY</div><div class="param-enum">KES</div><div class="param-enum">KGS</div><div class="param-enum">KHR</div><div class="param-enum">KMF</div><div class="param-enum">KPW</div><div class="param-enum">KRW</div><div class="param-enum">KWD</div><div class="param-enum">KYD</div><div class="param-enum">KZT</div><div class="param-enum">LAK</div><div class="param-enum">LBP</div><div class="param-enum">LKR</div><div class="param-enum">LRD</div><div class="param-enum">LSL</div><div class="param-enum">LTL</div><div class="param-enum">LVL</div><div class="param-enum">LYD</div><div class="param-enum">MAD</div><div class="param-enum">MDL</div><div class="param-enum">MGA</div><div class="param-enum">MKD</div><div class="param-enum">MMK</div><div class="param-enum">MNT</div><div class="param-enum">MOP</div><div class="param-enum">MRO</div><div class="param-enum">MUR</div><div class="param-enum">MVR</div><div class="param-enum">MWK</div><div class="param-enum">MXN</div><div class="param-enum">MYR</div><div class="param-enum">MZN</div><div class="param-enum">NAD</div><div class="param-enum">NGN</div><div class="param-enum">NIO</div><div class="param-enum">NOK</div><div class="param-enum">NPR</div><div class="param-enum">NZD</div><div class="param-enum">OMR</div><div class="param-enum">PAB</div><div class="param-enum">PEN</div><div class="param-enum">PGK</div><div class="param-enum">PHP</div><div class="param-enum">PKR</div><div class="param-enum">PLN</div><div class="param-enum">PYG</div><div class="param-enum">QAR</div><div class="param-enum">RON</div><div class="param-enum">RSD</div><div class="param-enum">RUB</div><div class="param-enum">RWF</div><div class="param-enum">SAR</div><div class="param-enum">SBD</div><div class="param-enum">SCR</div><div class="param-enum">SDG</div><div class="param-enum">SEK</div><div class="param-enum">SGD</div><div class="param-enum">SHP</div><div class="param-enum">SLL</div><div class="param-enum">SOS</div><div class="param-enum">SPL</div><div class="param-enum">SRD</div><div class="param-enum">STD</div><div class="param-enum">SVC</div><div class="param-enum">SYP</div><div class="param-enum">SZL</div><div class="param-enum">THB</div><div class="param-enum">TJS</div><div class="param-enum">TMT</div><div class="param-enum">TND</div><div class="param-enum">TOP</div><div class="param-enum">TRY</div><div class="param-enum">TTD</div><div class="param-enum">TVD</div><div class="param-enum">TWD</div><div class="param-enum">TZS</div><div class="param-enum">UAH</div><div class="param-enum">UGX</div><div class="param-enum">USD</div><div class="param-enum">UYU</div><div class="param-enum">UZS</div><div class="param-enum">VEF</div><div class="param-enum">VND</div><div class="param-enum">VUV</div><div class="param-enum">WST</div><div class="param-enum">XAF</div><div class="param-enum">XCD</div><div class="param-enum">XDR</div><div class="param-enum">XOF</div><div class="param-enum">XPF</div><div class="param-enum">YER</div><div class="param-enum">ZAR</div><div class="param-enum">ZMW</div><div class="param-enum">ZWD</div><div class="param-enum">BTC</div>
+<div class="param">effectiveDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">firstPaymentReferenceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">gatewayErrorCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">gatewayErrorMsg (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">paymentExternalKey (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">paymentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+<div class="param">processedAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">processedCurrency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">AED</div><div class="param-enum">AFN</div><div class="param-enum">ALL</div><div class="param-enum">AMD</div><div class="param-enum">ANG</div><div class="param-enum">AOA</div><div class="param-enum">ARS</div><div class="param-enum">AUD</div><div class="param-enum">AWG</div><div class="param-enum">AZN</div><div class="param-enum">BAM</div><div class="param-enum">BBD</div><div class="param-enum">BDT</div><div class="param-enum">BGN</div><div class="param-enum">BHD</div><div class="param-enum">BIF</div><div class="param-enum">BMD</div><div class="param-enum">BND</div><div class="param-enum">BOB</div><div class="param-enum">BRL</div><div class="param-enum">BSD</div><div class="param-enum">BTN</div><div class="param-enum">BWP</div><div class="param-enum">BYR</div><div class="param-enum">BZD</div><div class="param-enum">CAD</div><div class="param-enum">CDF</div><div class="param-enum">CHF</div><div class="param-enum">CLP</div><div class="param-enum">CNY</div><div class="param-enum">COP</div><div class="param-enum">CRC</div><div class="param-enum">CUC</div><div class="param-enum">CUP</div><div class="param-enum">CVE</div><div class="param-enum">CZK</div><div class="param-enum">DJF</div><div class="param-enum">DKK</div><div class="param-enum">DOP</div><div class="param-enum">DZD</div><div class="param-enum">EGP</div><div class="param-enum">ERN</div><div class="param-enum">ETB</div><div class="param-enum">EUR</div><div class="param-enum">FJD</div><div class="param-enum">FKP</div><div class="param-enum">GBP</div><div class="param-enum">GEL</div><div class="param-enum">GGP</div><div class="param-enum">GHS</div><div class="param-enum">GIP</div><div class="param-enum">GMD</div><div class="param-enum">GNF</div><div class="param-enum">GTQ</div><div class="param-enum">GYD</div><div class="param-enum">HKD</div><div class="param-enum">HNL</div><div class="param-enum">HRK</div><div class="param-enum">HTG</div><div class="param-enum">HUF</div><div class="param-enum">IDR</div><div class="param-enum">ILS</div><div class="param-enum">IMP</div><div class="param-enum">INR</div><div class="param-enum">IQD</div><div class="param-enum">IRR</div><div class="param-enum">ISK</div><div class="param-enum">JEP</div><div class="param-enum">JMD</div><div class="param-enum">JOD</div><div class="param-enum">JPY</div><div class="param-enum">KES</div><div class="param-enum">KGS</div><div class="param-enum">KHR</div><div class="param-enum">KMF</div><div class="param-enum">KPW</div><div class="param-enum">KRW</div><div class="param-enum">KWD</div><div class="param-enum">KYD</div><div class="param-enum">KZT</div><div class="param-enum">LAK</div><div class="param-enum">LBP</div><div class="param-enum">LKR</div><div class="param-enum">LRD</div><div class="param-enum">LSL</div><div class="param-enum">LTL</div><div class="param-enum">LVL</div><div class="param-enum">LYD</div><div class="param-enum">MAD</div><div class="param-enum">MDL</div><div class="param-enum">MGA</div><div class="param-enum">MKD</div><div class="param-enum">MMK</div><div class="param-enum">MNT</div><div class="param-enum">MOP</div><div class="param-enum">MRO</div><div class="param-enum">MUR</div><div class="param-enum">MVR</div><div class="param-enum">MWK</div><div class="param-enum">MXN</div><div class="param-enum">MYR</div><div class="param-enum">MZN</div><div class="param-enum">NAD</div><div class="param-enum">NGN</div><div class="param-enum">NIO</div><div class="param-enum">NOK</div><div class="param-enum">NPR</div><div class="param-enum">NZD</div><div class="param-enum">OMR</div><div class="param-enum">PAB</div><div class="param-enum">PEN</div><div class="param-enum">PGK</div><div class="param-enum">PHP</div><div class="param-enum">PKR</div><div class="param-enum">PLN</div><div class="param-enum">PYG</div><div class="param-enum">QAR</div><div class="param-enum">RON</div><div class="param-enum">RSD</div><div class="param-enum">RUB</div><div class="param-enum">RWF</div><div class="param-enum">SAR</div><div class="param-enum">SBD</div><div class="param-enum">SCR</div><div class="param-enum">SDG</div><div class="param-enum">SEK</div><div class="param-enum">SGD</div><div class="param-enum">SHP</div><div class="param-enum">SLL</div><div class="param-enum">SOS</div><div class="param-enum">SPL</div><div class="param-enum">SRD</div><div class="param-enum">STD</div><div class="param-enum">SVC</div><div class="param-enum">SYP</div><div class="param-enum">SZL</div><div class="param-enum">THB</div><div class="param-enum">TJS</div><div class="param-enum">TMT</div><div class="param-enum">TND</div><div class="param-enum">TOP</div><div class="param-enum">TRY</div><div class="param-enum">TTD</div><div class="param-enum">TVD</div><div class="param-enum">TWD</div><div class="param-enum">TZS</div><div class="param-enum">UAH</div><div class="param-enum">UGX</div><div class="param-enum">USD</div><div class="param-enum">UYU</div><div class="param-enum">UZS</div><div class="param-enum">VEF</div><div class="param-enum">VND</div><div class="param-enum">VUV</div><div class="param-enum">WST</div><div class="param-enum">XAF</div><div class="param-enum">XCD</div><div class="param-enum">XDR</div><div class="param-enum">XOF</div><div class="param-enum">XPF</div><div class="param-enum">YER</div><div class="param-enum">ZAR</div><div class="param-enum">ZMW</div><div class="param-enum">ZWD</div><div class="param-enum">BTC</div>
+<div class="param">secondPaymentReferenceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">SUCCESS</div><div class="param-enum">UNKNOWN</div><div class="param-enum">PENDING</div><div class="param-enum">PAYMENT_FAILURE</div><div class="param-enum">PLUGIN_FAILURE</div><div class="param-enum">PAYMENT_SYSTEM_OFF</div>
+<div class="param">transactionExternalKey (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">transactionId (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+<div class="param">transactionType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">AUTHORIZE</div><div class="param-enum">CAPTURE</div><div class="param-enum">CHARGEBACK</div><div class="param-enum">CREDIT</div><div class="param-enum">PURCHASE</div><div class="param-enum">REFUND</div><div class="param-enum">VOID</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RefundRequest"><code>RefundRequest</code> - RefundRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">amount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">currencyCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">USD</div><div class="param-enum">EUR</div><div class="param-enum">AUD</div>
+<div class="param">paymentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">transactionExternalKey (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RefundResponse"><code>RefundResponse</code> - RefundResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">authAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">capturedAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">creditedAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">currency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">AED</div><div class="param-enum">AFN</div><div class="param-enum">ALL</div><div class="param-enum">AMD</div><div class="param-enum">ANG</div><div class="param-enum">AOA</div><div class="param-enum">ARS</div><div class="param-enum">AUD</div><div class="param-enum">AWG</div><div class="param-enum">AZN</div><div class="param-enum">BAM</div><div class="param-enum">BBD</div><div class="param-enum">BDT</div><div class="param-enum">BGN</div><div class="param-enum">BHD</div><div class="param-enum">BIF</div><div class="param-enum">BMD</div><div class="param-enum">BND</div><div class="param-enum">BOB</div><div class="param-enum">BRL</div><div class="param-enum">BSD</div><div class="param-enum">BTN</div><div class="param-enum">BWP</div><div class="param-enum">BYR</div><div class="param-enum">BZD</div><div class="param-enum">CAD</div><div class="param-enum">CDF</div><div class="param-enum">CHF</div><div class="param-enum">CLP</div><div class="param-enum">CNY</div><div class="param-enum">COP</div><div class="param-enum">CRC</div><div class="param-enum">CUC</div><div class="param-enum">CUP</div><div class="param-enum">CVE</div><div class="param-enum">CZK</div><div class="param-enum">DJF</div><div class="param-enum">DKK</div><div class="param-enum">DOP</div><div class="param-enum">DZD</div><div class="param-enum">EGP</div><div class="param-enum">ERN</div><div class="param-enum">ETB</div><div class="param-enum">EUR</div><div class="param-enum">FJD</div><div class="param-enum">FKP</div><div class="param-enum">GBP</div><div class="param-enum">GEL</div><div class="param-enum">GGP</div><div class="param-enum">GHS</div><div class="param-enum">GIP</div><div class="param-enum">GMD</div><div class="param-enum">GNF</div><div class="param-enum">GTQ</div><div class="param-enum">GYD</div><div class="param-enum">HKD</div><div class="param-enum">HNL</div><div class="param-enum">HRK</div><div class="param-enum">HTG</div><div class="param-enum">HUF</div><div class="param-enum">IDR</div><div class="param-enum">ILS</div><div class="param-enum">IMP</div><div class="param-enum">INR</div><div class="param-enum">IQD</div><div class="param-enum">IRR</div><div class="param-enum">ISK</div><div class="param-enum">JEP</div><div class="param-enum">JMD</div><div class="param-enum">JOD</div><div class="param-enum">JPY</div><div class="param-enum">KES</div><div class="param-enum">KGS</div><div class="param-enum">KHR</div><div class="param-enum">KMF</div><div class="param-enum">KPW</div><div class="param-enum">KRW</div><div class="param-enum">KWD</div><div class="param-enum">KYD</div><div class="param-enum">KZT</div><div class="param-enum">LAK</div><div class="param-enum">LBP</div><div class="param-enum">LKR</div><div class="param-enum">LRD</div><div class="param-enum">LSL</div><div class="param-enum">LTL</div><div class="param-enum">LVL</div><div class="param-enum">LYD</div><div class="param-enum">MAD</div><div class="param-enum">MDL</div><div class="param-enum">MGA</div><div class="param-enum">MKD</div><div class="param-enum">MMK</div><div class="param-enum">MNT</div><div class="param-enum">MOP</div><div class="param-enum">MRO</div><div class="param-enum">MUR</div><div class="param-enum">MVR</div><div class="param-enum">MWK</div><div class="param-enum">MXN</div><div class="param-enum">MYR</div><div class="param-enum">MZN</div><div class="param-enum">NAD</div><div class="param-enum">NGN</div><div class="param-enum">NIO</div><div class="param-enum">NOK</div><div class="param-enum">NPR</div><div class="param-enum">NZD</div><div class="param-enum">OMR</div><div class="param-enum">PAB</div><div class="param-enum">PEN</div><div class="param-enum">PGK</div><div class="param-enum">PHP</div><div class="param-enum">PKR</div><div class="param-enum">PLN</div><div class="param-enum">PYG</div><div class="param-enum">QAR</div><div class="param-enum">RON</div><div class="param-enum">RSD</div><div class="param-enum">RUB</div><div class="param-enum">RWF</div><div class="param-enum">SAR</div><div class="param-enum">SBD</div><div class="param-enum">SCR</div><div class="param-enum">SDG</div><div class="param-enum">SEK</div><div class="param-enum">SGD</div><div class="param-enum">SHP</div><div class="param-enum">SLL</div><div class="param-enum">SOS</div><div class="param-enum">SPL</div><div class="param-enum">SRD</div><div class="param-enum">STD</div><div class="param-enum">SVC</div><div class="param-enum">SYP</div><div class="param-enum">SZL</div><div class="param-enum">THB</div><div class="param-enum">TJS</div><div class="param-enum">TMT</div><div class="param-enum">TND</div><div class="param-enum">TOP</div><div class="param-enum">TRY</div><div class="param-enum">TTD</div><div class="param-enum">TVD</div><div class="param-enum">TWD</div><div class="param-enum">TZS</div><div class="param-enum">UAH</div><div class="param-enum">UGX</div><div class="param-enum">USD</div><div class="param-enum">UYU</div><div class="param-enum">UZS</div><div class="param-enum">VEF</div><div class="param-enum">VND</div><div class="param-enum">VUV</div><div class="param-enum">WST</div><div class="param-enum">XAF</div><div class="param-enum">XCD</div><div class="param-enum">XDR</div><div class="param-enum">XOF</div><div class="param-enum">XPF</div><div class="param-enum">YER</div><div class="param-enum">ZAR</div><div class="param-enum">ZMW</div><div class="param-enum">ZWD</div><div class="param-enum">BTC</div>
+<div class="param">paymentExternalKey (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">paymentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+<div class="param">paymentNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">paymentTransaction (optional)</div><div class="param-desc"><span class="param-type"><a href="#PaymentTransaction">PaymentTransaction</a></span>  </div>
+<div class="param">purchasedAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">refundedAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SepaIbanPaymentMethodCreationRequest"><code>SepaIbanPaymentMethodCreationRequest</code> - SepaIbanPaymentMethodCreationRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">authorizationDetails (optional)</div><div class="param-desc"><span class="param-type"><a href="#AuthorizationDetails">AuthorizationDetails</a></span>  </div>
+<div class="param">customer (optional)</div><div class="param-desc"><span class="param-type"><a href="#Customer">Customer</a></span>  </div>
+<div class="param">externalAccountId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fauxCreditCard (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">recuringPaymentMethodId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">recurringPaymentDefinitionId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SubscriptionCreationRequest"><code>SubscriptionCreationRequest</code> - SubscriptionCreationRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">billingDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+<div class="param">customer (optional)</div><div class="param-desc"><span class="param-type"><a href="#Customer">Customer</a></span>  </div>
+<div class="param">entitlementDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+<div class="param">migration (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">orderItems (optional)</div><div class="param-desc"><span class="param-type"><a href="#OrderItem">array[OrderItem]</a></span>  </div>
+<div class="param">recurringPaymentDefinitionId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SubscriptionResponse"><code>SubscriptionResponse</code> - SubscriptionResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">externalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">subscriptionId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WarrantyAssociationRequest"><code>WarrantyAssociationRequest</code> - WarrantyAssociationRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">resaleProductId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">rpdId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">rpmId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

@@ -1,1 +1,3 @@
-http://nutch.apache.org
+http://apache/claim-filing-service.html
+http://apache/warranty-lifecycle.html
+http://apache/billing-adapter.html

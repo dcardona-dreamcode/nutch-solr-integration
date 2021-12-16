@@ -1,0 +1,810 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Api Documentation</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>Api Documentation</h1>
+    <div class="app-desc">Api Documentation</div>
+    <div class="app-desc">Version: 1.0</div>
+    <div class="app-desc">BasePath:/</div>
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0</div>
+  <h2>Access</h2>
+    <ol>
+      <li>APIKey KeyParamName:Authorization KeyInQuery:false KeyInHeader:true</li>
+      <li>HTTP Basic Authentication</li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#WarrantyLifecycleController">WarrantyLifecycleController</a></h4>
+  <ul>
+  <li><a href="#cancelWarrantyByParametersUsingPOST"><code><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/cancellation</code></a></li>
+  <li><a href="#cancelWarrantyUsingPOST"><code><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/{warranty-id}/cancellation</code></a></li>
+  <li><a href="#getCancellabilityUsingGET"><code><span class="http-method">get</span> /api/warranty-lifecycle/v1/warranties/{warranty-id}/cancellability</code></a></li>
+  <li><a href="#getTransferabilityUsingGET"><code><span class="http-method">get</span> /api/warranty-lifecycle/v1/warranties/transferability</code></a></li>
+  <li><a href="#reinstateWarrantyUsingPOST"><code><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/reinstatement</code></a></li>
+  <li><a href="#transferWarrantiesUsingPOST"><code><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/transfer</code></a></li>
+  </ul>
+
+  <h1><a name="WarrantyLifecycleController">WarrantyLifecycleController</a></h1>
+  <div class="method"><a name="cancelWarrantyByParametersUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/cancellation</code></pre></div>
+    <div class="method-summary">Cancel a warranty By Merchant Id, External Warranty Id, Customer Order Number and Warranty SKU UPC (<span class="nickname">cancelWarrantyByParametersUsingPOST</span>)</div>
+    <div class="method-notes">The specified warranty is cancelled (if allowed), and refund requested (if applicable).</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">requestData <a href="#MerchantCancellationRequest">MerchantCancellationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; requestData </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#MerchantCancellationResponse">MerchantCancellationResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The cancellation was successfully processed. Refer to the response payload for details regarding the cancellability of this warranty.
+        <a href="#MerchantCancellationResponse">MerchantCancellationResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">202</h4>
+    The cancellation request was accepted and will be processed. The warranty should be cancelled but in unusual cases may not be.
+        <a href="#MerchantCancellationResponse">MerchantCancellationResponse</a>
+    <h4 class="field-label">400</h4>
+    The request was not valid or contained incorrect data.
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Valid authentication must be provided.
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Authentication was successful, but the principal is not authorized to cancel this warranty.
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Something unexpected happened.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="cancelWarrantyUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/{warranty-id}/cancellation</code></pre></div>
+    <div class="method-summary">Cancel a warranty (<span class="nickname">cancelWarrantyUsingPOST</span>)</div>
+    <div class="method-notes">The specified warranty is cancelled (if allowed), and refund requested (if applicable).</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">warranty-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; warranty-id </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">cancellationRequest <a href="#CancellationRequest">CancellationRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; cancellationRequest </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#CancellationResponse">CancellationResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The cancellation was successfully processed. Refer to the response payload for details regarding the cancellability of this warranty.
+        <a href="#CancellationResponse">CancellationResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">202</h4>
+    The cancellation request was accepted and will be processed. The warranty should be cancelled but in unusual cases may not be.
+        <a href="#CancellationResponse">CancellationResponse</a>
+    <h4 class="field-label">400</h4>
+    The request was not valid or contained incorrect data.
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Valid authentication must be provided.
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Authentication was successful, but the principal is not authorized to cancel this warranty.
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    The requested warranty was not found.
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Something unexpected happened.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCancellabilityUsingGET"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/warranty-lifecycle/v1/warranties/{warranty-id}/cancellability</code></pre></div>
+    <div class="method-summary">Test the cancellability of a warranty (<span class="nickname">getCancellabilityUsingGET</span>)</div>
+    <div class="method-notes">The cancellability is determined and detailed information regarding potential cancellation is returned.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">warranty-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; warranty-id </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#CancellabilityResponse">CancellabilityResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The cancellability was successfully determined. Refer to the response payload for details regarding the cancellability of this warranty.
+        <a href="#CancellabilityResponse">CancellabilityResponse</a>
+    <h4 class="field-label">401</h4>
+    Valid authentication must be provided.
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Authentication was successful, but the principal is not authorized to check cancellability of this warranty.
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    The requested warranty was not found.
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Something unexpected happened.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getTransferabilityUsingGET"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/warranty-lifecycle/v1/warranties/transferability</code></pre></div>
+    <div class="method-summary">Test the transferability of warranties (<span class="nickname">getTransferabilityUsingGET</span>)</div>
+    <div class="method-notes">The transferability is determined and detailed information regarding potential transfer is returned.For a null warrantyId parameter it will return all warranties that belongs to the user linked to the authentication token</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">Authorization (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authorization </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">filter (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; filter default: ALL </div><div class="param">order (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; order default: DESC </div><div class="param">page (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; page default: 0 format: int32</div><div class="param">pageSize (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; pageSize default: 20 format: int32</div><div class="param">warrantyId (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; warrantyId </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#TransferabilityResponse">TransferabilityResponse</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The transferability was successfully determined. Refer to the response payload for details regarding the transferability of the warranties.
+        
+    <h4 class="field-label">401</h4>
+    Valid authentication must be provided.
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Authentication was successful, but the principal is not authorized to check transferability of the warranties.
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    The requested warranties was not found.
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Something unexpected happened.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="reinstateWarrantyUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/reinstatement</code></pre></div>
+    <div class="method-summary">Reinstate warranties (<span class="nickname">reinstateWarrantyUsingPOST</span>)</div>
+    <div class="method-notes">The specified warranty is reinstated.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#ReinstateRequest">ReinstateRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; request </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ReinstateResponse">ReinstateResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The request was processed. Returns the status of the reinstatement.
+        <a href="#ReinstateResponse">ReinstateResponse</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    The request was not valid or contained incorrect data.
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+    <h4 class="field-label">406</h4>
+    The warranty to be reinstated was not found.
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    The reinstated warranty could not be created.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="transferWarrantiesUsingPOST"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/warranty-lifecycle/v1/warranties/transfer</code></pre></div>
+    <div class="method-summary">Transfer warranties (<span class="nickname">transferWarrantiesUsingPOST</span>)</div>
+    <div class="method-notes">The specified warranties are transferred.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#TransferRequest">TransferRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; request </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#TransferResponses">TransferResponses</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The transfer was successfully processed
+        <a href="#TransferResponses">TransferResponses</a>
+    <h4 class="field-label">201</h4>
+    Created
+        <a href="#"></a>
+    <h4 class="field-label">202</h4>
+    The transfer request was accepted and will be processed. The warranties should be transferred but in unusual cases may not be.
+        <a href="#TransferResponses">TransferResponses</a>
+    <h4 class="field-label">400</h4>
+    The request was not valid or contained incorrect data.
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Valid authentication must be provided.
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Authentication was successful, but the principal is not authorized to transfer this warranty.
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    The requested warranty was not found.
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Something unexpected happened.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Amount"><code>Amount</code> - Amount</a></li>
+    <li><a href="#CancellabilityResponse"><code>CancellabilityResponse</code> - CancellabilityResponse</a></li>
+    <li><a href="#CancellationRequest"><code>CancellationRequest</code> - CancellationRequest</a></li>
+    <li><a href="#CancellationResponse"><code>CancellationResponse</code> - CancellationResponse</a></li>
+    <li><a href="#MerchantCancellationRequest"><code>MerchantCancellationRequest</code> - MerchantCancellationRequest</a></li>
+    <li><a href="#MerchantCancellationResponse"><code>MerchantCancellationResponse</code> - MerchantCancellationResponse</a></li>
+    <li><a href="#MerchantCancellationWarrantyResult"><code>MerchantCancellationWarrantyResult</code> - MerchantCancellationWarrantyResult</a></li>
+    <li><a href="#MerchantContact"><code>MerchantContact</code> - MerchantContact</a></li>
+    <li><a href="#OrderInfo"><code>OrderInfo</code> - OrderInfo</a></li>
+    <li><a href="#Refund"><code>Refund</code> - Refund</a></li>
+    <li><a href="#ReinstateRequest"><code>ReinstateRequest</code> - ReinstateRequest</a></li>
+    <li><a href="#ReinstateResponse"><code>ReinstateResponse</code> - ReinstateResponse</a></li>
+    <li><a href="#TransferRequest"><code>TransferRequest</code> - TransferRequest</a></li>
+    <li><a href="#TransferResponse"><code>TransferResponse</code> - TransferResponse</a></li>
+    <li><a href="#TransferResponses"><code>TransferResponses</code> - TransferResponses</a></li>
+    <li><a href="#TransferabilityResponse"><code>TransferabilityResponse</code> - TransferabilityResponse</a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Amount"><code>Amount</code> - Amount</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">currency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CancellabilityResponse"><code>CancellabilityResponse</code> - CancellabilityResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">canCancel (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">merchantContact (optional)</div><div class="param-desc"><span class="param-type"><a href="#MerchantContact">MerchantContact</a></span>  </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Informational message only, do not rely upon contents for business logic decisions </div>
+<div class="param">refund (optional)</div><div class="param-desc"><span class="param-type"><a href="#Refund">Refund</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CancellationRequest"><code>CancellationRequest</code> - CancellationRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">cancelReasonCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">PARTIAL_REFUND</div><div class="param-enum">FULL_REFUND_CANCEL</div><div class="param-enum">USER_REQUEST_CANCEL</div><div class="param-enum">DEVICE_CHANGE_CANCEL</div><div class="param-enum">POLICY_CANCEL</div><div class="param-enum">USER_NONPAYMENT_CANCEL</div><div class="param-enum">PAYMENT_REVERSAL</div><div class="param-enum">UNSPECIFIED</div><div class="param-enum">UNKNOWN</div>
+<div class="param">reason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CancellationResponse"><code>CancellationResponse</code> - CancellationResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">canCancel (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">cancelEffective (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">cancelRequest (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Informational message only, do not rely upon contents for business logic decisions </div>
+<div class="param">previousWarrantyStatus (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">refund (optional)</div><div class="param-desc"><span class="param-type"><a href="#Refund">Refund</a></span>  </div>
+<div class="param">warrantyId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">warrantyStatus (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="MerchantCancellationRequest"><code>MerchantCancellationRequest</code> - MerchantCancellationRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">cancelReasonCode (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">PARTIAL_REFUND</div><div class="param-enum">FULL_REFUND_CANCEL</div><div class="param-enum">USER_REQUEST_CANCEL</div><div class="param-enum">DEVICE_CHANGE_CANCEL</div><div class="param-enum">POLICY_CANCEL</div><div class="param-enum">USER_NONPAYMENT_CANCEL</div><div class="param-enum">PAYMENT_REVERSAL</div><div class="param-enum">UNSPECIFIED</div><div class="param-enum">UNKNOWN</div>
+<div class="param">cancellationDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">customerOrderNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">externalWarrantyId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">merchantId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">quantity (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">reason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">refundOverride (optional)</div><div class="param-desc"><span class="param-type"><a href="#Amount">Amount</a></span>  </div>
+<div class="param">sendEmail (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">serialNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">taxRefundOverride (optional)</div><div class="param-desc"><span class="param-type"><a href="#Amount">Amount</a></span>  </div>
+<div class="param">warrantyId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">warrantySkuUPC (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="MerchantCancellationResponse"><code>MerchantCancellationResponse</code> - MerchantCancellationResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">totalFailures (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">totalProcessed (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">totalRequested (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">warranties (optional)</div><div class="param-desc"><span class="param-type"><a href="#MerchantCancellationWarrantyResult">array[MerchantCancellationWarrantyResult]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="MerchantCancellationWarrantyResult"><code>MerchantCancellationWarrantyResult</code> - MerchantCancellationWarrantyResult</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="MerchantContact"><code>MerchantContact</code> - MerchantContact</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">phone (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OrderInfo"><code>OrderInfo</code> - OrderInfo</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">merchantUpc (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">orderPlacedDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">salesOrderNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Refund"><code>Refund</code> - Refund</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">amount (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>
+<div class="param">currency (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ReinstateRequest"><code>ReinstateRequest</code> - ReinstateRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">merchantId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">orderInfo (optional)</div><div class="param-desc"><span class="param-type"><a href="#OrderInfo">OrderInfo</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ReinstateResponse"><code>ReinstateResponse</code> - ReinstateResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">originalWarrantyId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">reinstateStatus (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">reinstateStatusReason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">reinstatedWarrantyId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="TransferRequest"><code>TransferRequest</code> - TransferRequest</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">agentName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">currentPersonEmail (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">newPersonEmail (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">suppressEmail (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">warrantyIds (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="TransferResponse"><code>TransferResponse</code> - TransferResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">time (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">warrantyId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="TransferResponses"><code>TransferResponses</code> - TransferResponses</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">transferResults (optional)</div><div class="param-desc"><span class="param-type"><a href="#TransferResponse">array[TransferResponse]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="TransferabilityResponse"><code>TransferabilityResponse</code> - TransferabilityResponse</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">isTransferable (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">merchantId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">reason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">warrantyId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
